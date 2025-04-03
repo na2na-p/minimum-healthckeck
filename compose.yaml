@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    image: registry.na2na.dev/utils/minimum-healthcheck:v0.0.1
+    ports:
+      - "8080:8080"
