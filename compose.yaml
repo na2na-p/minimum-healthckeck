@@ -2,6 +2,6 @@ services:
   app:
     platform: linux/amd64
     build: .
-    image: registry.na2na.dev/utils/minimum-healthcheck:v0.0.3
+    image: registry.na2na.dev/utils/minimum-healthcheck:v0.0.4
     ports:
       - "8080:8080"
