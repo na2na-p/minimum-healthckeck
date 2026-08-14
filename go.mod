@@ -1,3 +1,3 @@
 module na2na.dev/minimum-healthcheck
 
-go 1.26.5
+go 1.26.6
