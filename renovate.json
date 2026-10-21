@@ -1,0 +1,37 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "timezone": "Asia/Tokyo",
+  "schedule": [
+    "* 0-8 * * 1"
+  ],
+  "dependencyDashboard": true,
+  "minimumReleaseAge": "7 days",
+  "prConcurrentLimit": 5,
+  "prHourlyLimit": 2,
+  "labels": ["renovate"],
+  "rangeStrategy": "bump",
+  "automerge": false,
+  "docker-compose": {
+    "description": "compose.yaml のイメージは自前レジストリへの push 先タグであり、Renovate で更新する対象ではない",
+    "enabled": false
+  },
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["major"],
+      "addLabels": ["major update"]
+    },
+    {
+      "description": "Go は mise.toml・go.mod の go ディレクティブ・Dockerfile のベースイメージが食い違うとビルド時に toolchain 取得が走るため同一 PR で揃える",
+      "matchDepNames": ["go", "golang"],
+      "groupName": "Go",
+      "separateMajorMinor": false
+    },
+    {
+      "matchManagers": ["dockerfile"],
+      "pinDigests": true
+    }
+  ]
+}
